@@ -1,0 +1,30 @@
+﻿@using BLL.DTO
+@model IEnumerable<GoodDTO>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Название</th>
+            <th>Цена</th>
+            <th>Количество</th>
+            <th>Производитель</th>
+            <th>Категории</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (GoodDTO good in Model)
+        {
+            <tr>
+                <td>@good.GoodId</td>
+                <td>@good.GoodName</td>
+                <td>@good.Price</td>
+                <td>@good.GoodCount</td>
+                <td>@(good.ManufacturerName)</td>
+                <td>@(good.CategoryName)</td>
+                <td>@Html.ActionLink("Редактировать", "CreateGoods", "Goods", new { id = good.GoodId }, new { @class = "btn btn-info" })</td>
+                <td>@Html.ActionLink("Удалить", "DeleteGoods", "Goods", new { id = good.GoodId }, new { @class = "btn btn-info" })</td>
+            </tr>
+        }
+    </tbody>
+</table>

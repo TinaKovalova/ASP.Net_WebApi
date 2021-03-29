@@ -1,0 +1,40 @@
+﻿@using ASP2.Models
+@model IEnumerable<ExchangeCourse> 
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="container">
+    <div class="row">
+    <div class=" col-md-8">
+        @Html.ActionLink("Товары", "Index", "Goods", null, new { @class = "btn btn-primary" })
+        @Html.ActionLink("Категории", "Index", "Category", null, new { @class = "btn btn-primary" })
+        @Html.ActionLink("Производитель", "Index", "Manufacturer", null, new { @class = "btn btn-primary" })
+
+    </div>
+    <div class="panel panel-default col-md-4">
+        <div class="panel-heading">Курс валют Приват24</div>
+        <table class="table">
+            <thead>
+                <tr class="container bg-success">
+                    <td style="width:30%"> </td>
+                    <td style="width:40%">Покупка</td>
+                    <td style="width:40%">Продажа</td>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (ExchangeCourse course in Model)
+                {
+                    <tr class="container  text-justify ">
+                        <td class="text-danger">@course.Ccy</td>
+                        <td>@course.Buy</td>
+                        <td>@course.Sale</td>
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+    </div>
+    </div>
+</div>

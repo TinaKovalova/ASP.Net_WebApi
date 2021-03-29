@@ -1,0 +1,61 @@
+﻿@model BLL.DTO.GoodDTO
+
+@{
+    ViewBag.Title = "CreateGoods";
+}
+
+<h2>CreateGoods</h2>
+
+<div>
+    @Html.ActionLink("Назад", "Index", "Goods", null, new { @class = "btn btn-primary" })
+</div>
+@using (Html.BeginForm("CreateGoods", "Goods", FormMethod.Post))
+{
+    @Html.ValidationSummary()
+    @Html.HiddenFor(x => x.GoodId)
+    <div class="form-group">
+        <div>
+            @Html.LabelFor(x => x.GoodName)
+        </div>
+        <div>
+            @Html.EditorFor(x => x.GoodName, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        <div>
+            @Html.LabelFor(x => x.GoodCount)
+        </div>
+        <div>
+            @Html.EditorFor(x => x.GoodCount, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        <div>
+            @Html.LabelFor(x => x.Price)
+        </div>
+        <div>
+            @Html.EditorFor(x => x.Price, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        <div>
+            @Html.LabelFor(x => x.ManufacturerName)
+        </div>
+        <div>
+            @Html.DropDownListFor(x => x.ManufacturerId, new SelectList(ViewBag.Manufacturers, "ManufacturerId","ManufacturerName"))
+        </div>
+    </div>
+    <div class="form-group">
+        <div>
+            @Html.LabelFor(x => x.CategoryName)
+        </div>
+        <div>
+            @Html.DropDownListFor(x => x.CategoryId, new SelectList(ViewBag.Categoryes, "CategoryId", "CategoryName"))
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+
+}
+
+

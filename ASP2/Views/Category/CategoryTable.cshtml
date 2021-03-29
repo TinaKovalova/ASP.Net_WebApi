@@ -1,0 +1,22 @@
+﻿@using BLL.DTO
+@model IEnumerable<CategoryDTO>
+<table class="table">
+    <thead>
+        <tr>
+            <td>Id</td> 
+            <td>Название котегории</td> 
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (CategoryDTO category in Model)
+        {
+        <tr>
+            <td>@category.CategoryId</td>
+            <td>@category.CategoryName</td>
+            <td>@Html.ActionLink("Редактировать", "CreateCategory", "Category", new { id = category.CategoryId }, new { @class = "btn btn-info" })</td>
+            <td>@Html.ActionLink("Удалить", "CategoryManufacturer", "Category", new { id = category.CategoryId }, new { @class = "btn btn-info" })</td>
+        </tr>
+        }
+
+    </tbody>
+</table>

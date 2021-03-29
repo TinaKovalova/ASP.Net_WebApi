@@ -1,0 +1,26 @@
+﻿@model BLL.DTO.ManufacturerDTO
+@{
+    ViewBag.Title = "CreateManufacturer";
+}
+
+<h2>CreateManufacturer</h2>
+<div>
+    @Html.ActionLink("Назад", "Index", "Manufacturer", null, new { @class = "btn btn-primary" })
+</div>
+@using (Html.BeginForm("CreateManufacturer", "Manufacturer", FormMethod.Post))
+{
+    @Html.ValidationSummary()
+    @Html.HiddenFor(x => x.ManufacturerId)
+    <div class="form-group">
+        <div>
+            @Html.LabelFor(x => x.ManufacturerName)
+        </div>
+        <div>
+            @Html.EditorFor(x => x.ManufacturerName, new { @class = "form-control" })
+        </div>
+    </div>
+    
+    <button type="submit" class="btn btn-primary">Submit</button>
+
+}
+

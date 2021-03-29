@@ -1,0 +1,22 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    AjaxOptions ajaxOptions = new AjaxOptions
+    {
+        UpdateTargetId = "mtable"
+    };
+}
+<div>
+    @Html.ActionLink("Добавить производителя", "CreateManufacturer", null, new { @class = "btn btn-primary" })
+</div>
+<div>
+    @Html.ActionLink("Назад", "Index", "Home", null, new { @class = "btn btn-light w-25" })
+
+    @for (int i = 0; i < ViewBag.PagesCount; i++)
+    {
+        @Ajax.ActionLink($"{i + 1}", "ManufacturersTable", "Manufacturer", new { id = i + 1 }, ajaxOptions, new { @class = "btn btn-primary" });
+    }
+</div>
+<div id="mtable">
+    @{Html.RenderAction("ManufacturersTable");}
+</div>

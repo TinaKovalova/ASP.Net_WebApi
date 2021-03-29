@@ -1,0 +1,27 @@
+﻿@model BLL.DTO.CategoryDTO
+@{
+    ViewBag.Title = "CreateCategory";
+}
+<h2>CreateCategory</h2>
+<div>
+    @Html.ActionLink("Назад", "Index", "Category", null, new { @class = "btn btn-primary" })
+</div>
+
+@using (Html.BeginForm("CreateCategory", "Category", FormMethod.Post))
+{
+    @Html.ValidationSummary()
+    @Html.HiddenFor(x => x.CategoryId)
+    <div class="form-group">
+
+        <div>
+            @Html.LabelFor(x => x.CategoryName)
+        </div>
+        <div>
+            @Html.EditorFor(x => x.CategoryName, new { @class = "form-control" })
+        </div>
+
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+
+}
+

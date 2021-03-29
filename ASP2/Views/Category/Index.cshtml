@@ -1,0 +1,21 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    AjaxOptions ajaxOptions = new AjaxOptions
+    {
+        UpdateTargetId = "ctable"
+    };
+}
+<div>
+    @Html.ActionLink("Добавить категорию", "CreateCategory", "Category", null, new { @class = "btn btn-primary" })
+</div>
+@Html.ActionLink("Назад", "Index", "Home", null, new { @class = "btn btn-light w-25" })
+@for (int i = 0; i < ViewBag.PagesCount; i++)
+{
+    @Ajax.ActionLink($"{i + 1}", "CategoryTable", "Category", new { id = i + 1 }, ajaxOptions, new { @class = "btn btn-primary" })
+}
+<div id=ctable>
+    @{Html.RenderAction("CategoryTable"); }
+</div>
+
+

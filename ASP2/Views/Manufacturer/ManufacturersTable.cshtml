@@ -1,0 +1,25 @@
+﻿@using BLL.DTO
+@model IEnumerable<ManufacturerDTO>
+
+<table class="table">
+    <thead>
+        <tr>
+            <td>Id</td>
+            <td>Название производителя</td>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (ManufacturerDTO manufacturer in Model)
+        {
+        <tr>
+            <td>@manufacturer.ManufacturerId</td>
+            <td>@manufacturer.ManufacturerName</td>
+            <td>@Html.ActionLink("Редактировать", "CreateManufacturer", "Manufacturer", new { id = manufacturer.ManufacturerId }, new { @class = "btn btn-info" })</td>
+            <td>@Html.ActionLink("Удалить", "DeleteManufacturer", "Manufacturer", new { id = manufacturer.ManufacturerId }, new { @class = "btn btn-info" })</td>
+        </tr>
+        }
+
+    </tbody>
+</table>
+
